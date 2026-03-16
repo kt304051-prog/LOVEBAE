@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+#text{
+    font-size:20px;
+    margin-top:20px;
+    min-height:30px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>❤️ Gửi Em ❤️</h1>
+
+<div id="text"></div>
+
+<button onclick="startLove()">Bấm vào đây</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="Làm Vợ Anh Nhé.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let message="Anh không giỏi nói lời hoa mỹ... nhưng anh thật sự rất thích em ❤️";
+
+let i=0;
+
+function startLove(){
+
+document.getElementById("music").play();
+
+typing();
+
+setInterval(createHeart,300);
+
+}
+
+function typing(){
+
+if(i < message.length){
+
+document.getElementById("text").innerHTML += message.charAt(i);
+
+i++;
+
+setTimeout(typing,60);
+
+}
+
+}
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=Math.random()*30+20+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000);
+
+}
+
+</script>
+
+</body>
+</html>
